@@ -1,14 +1,26 @@
-import { createReadStream } from 'fs';
-import readline from 'readline';
+import { createReadStream } from 'node:fs';
+import { createInterface } from "node:readline";
 
 async function main() {
-	const lines = readline.createInterface({
-		input: createReadStream('./input.txt'),
+	// Your code here
+}
+
+async function readFile(typeMapper: (input: InputType, line: string) => InputType): Promise<InputType> {
+	const lines = createInterface({
+		input: createReadStream('../input.txt'),
 		crlfDelay: Infinity,
 	});
 
-	for await (const line of lines) {
+	let input: InputType = new InputType()
+	for await (let line of lines) {
+		input = typeMapper(input, line);
 	}
+
+	return input
+}
+
+class InputType {
+	// Type definition here
 }
 
 main();
