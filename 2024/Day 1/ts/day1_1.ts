@@ -17,11 +17,18 @@ async function main() {
 
 	let addedList: number[] = []
 	input.leftList.forEach((line, i) => {
-		addedList.push( Math.abs(line - input.rightList[i]))
+		addedList.push(Math.abs(line - input.rightList[i]))
 	})
 
 	console.log(addedList.reduce((a, b) => a + b, 0))
 }
+
+class InputType {
+	leftList: number[] = []
+	rightList: number[] = []
+}
+
+// Boilerplate from here
 
 async function readFile(typeMapper: (input: InputType, line: string) => InputType): Promise<InputType> {
 	const lines = createInterface({
@@ -35,11 +42,6 @@ async function readFile(typeMapper: (input: InputType, line: string) => InputTyp
 	}
 
 	return input
-}
-
-class InputType {
-	leftList: number[] = []
-	rightList: number[] = []
 }
 
 main();

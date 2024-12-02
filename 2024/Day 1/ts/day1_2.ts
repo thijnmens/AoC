@@ -1,5 +1,5 @@
 import { createReadStream } from 'node:fs';
-import { Interface, createInterface } from "node:readline";
+import { createInterface } from "node:readline";
 
 async function main() {
 	let input = await readFile((input, line) => {
@@ -14,7 +14,7 @@ async function main() {
 	input.leftList.sort((a, b) => (a - b))
 	input.rightList.sort((a, b) => (a - b))
 
-	let countingList: { [locId: number]: number} = {}
+	let countingList: { [locId: number]: number } = {}
 	let addedList: number[] = []
 
 	input.rightList.forEach((locID) => {
